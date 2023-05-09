@@ -570,9 +570,21 @@ public class GrandExchangePlugin extends Plugin
 
 		if (message.startsWith("Grand Exchange:"))
 		{
-			this.notifier.notify(message);
+			// Check the new config option
+			if (this.config.onlyFinishedTransactions()) 
+			{
+				if (message.startsWith("Grand Exchange: Finished buying") || message.startsWith("Grand Exchange: Finished selling")) 
+				{
+					this.notifier.notify(message);
+				}
+			}
+			else 
+			{
+				this.notifier.notify(message);
+			}
 		}
 	}
+
 
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)

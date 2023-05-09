@@ -135,4 +135,16 @@ public interface GrandExchangeConfig extends Config
 	{
 		return GrandExchangeSearchMode.DEFAULT;
 	}
+
+	@ConfigItem(
+			position = 10,
+			keyName = "onlyFinishedTransactions",
+			name = "Notify only on finished transactions",
+			description = "Only send notifications for finished buying or selling transactions"
+	)
+	default boolean onlyFinishedTransactions()
+	{
+		return false;
+	}
+
 }
